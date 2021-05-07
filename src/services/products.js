@@ -13,7 +13,7 @@ router.get("/:productId", async (req, res, next) => {
   try {
     const products = await Product.findAll({
       where: { id: req.params.productId },
-      include: [{ model: Category }, { model: Review }],
+      include: [{ model: Category }, { model: Review, include: User }],
       attributes: { exclude: ["categoryId", "reviewId"] },
     });
     res.status(200).send(products);
