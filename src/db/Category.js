@@ -1,5 +1,5 @@
-const CategoryModel = (sequelize, DataTypes) => {
-  const Category = sequelize.define(
+const CategoryModel = (database, DataTypes) => {
+  const Category = database.define(
     "category",
     {
       id: {

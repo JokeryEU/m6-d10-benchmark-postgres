@@ -1,5 +1,5 @@
-const ProductModel = (sequelize, DataTypes) => {
-  const Product = sequelize.define("product", {
+const ProductModel = (database, DataTypes) => {
+  const Product = database.define("product", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,

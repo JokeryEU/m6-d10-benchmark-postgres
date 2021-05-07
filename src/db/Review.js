@@ -1,5 +1,5 @@
-const ReviewModel = (sequelize, DataTypes) => {
-  const Review = sequelize.define("review", {
+const ReviewModel = (database, DataTypes) => {
+  const Review = database.define("review", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,

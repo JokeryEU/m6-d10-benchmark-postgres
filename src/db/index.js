@@ -1,7 +1,7 @@
 import sequelize from "sequelize";
 const { Sequelize, DataTypes } = sequelize;
 
-export const sequelize = new Sequelize(
+export const database = new Sequelize(
   process.env.PGDATABASE,
   process.env.PGUSER,
   process.env.PGPASSWORD,
@@ -12,10 +12,10 @@ import UserModel from "./User.js";
 import CategoryModel from "./Category.js";
 import ReviewModel from "./Review.js";
 
-export const Product = ProductModel(sequelize, DataTypes);
-export const User = UserModel(sequelize, DataTypes);
-export const Category = CategoryModel(sequelize, DataTypes);
-export const Review = ReviewModel(sequelize, DataTypes);
+export const Product = ProductModel(database, DataTypes);
+export const User = UserModel(database, DataTypes);
+export const Category = CategoryModel(database, DataTypes);
+export const Review = ReviewModel(database, DataTypes);
 
 User.hasMany(Review);
 Review.belongsTo(User);
@@ -26,9 +26,9 @@ Review.belongsTo(Product);
 Category.hasMany(Product);
 Product.belongsTo(Category);
 
-sequelize
+database
   .authenticate()
   .then(() => console.log("Connection established"))
   .catch((e) => console.log(e));
 
-export default { sequelize, Product, User, Category, Review };
+export default { database, Product, User, Category, Review };
